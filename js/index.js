@@ -1,57 +1,126 @@
-$(".menu").click(function(){
-    $(".menu-wrap").css("display","block").siblings().css("display","none")
+
+$(".small-nav>li").eq(0).click(function(){
+    $(".menu-wrap").slideDown().siblings().css("display","none")
 })
-$(".esc-menu").click(function(){
-    $(".menu-wrap").css("display","none").siblings().css("display","block")
+$(".menu-wrap .small-nav>li").eq(0).click(function(){
+    $(".menu-wrap").slideUp().siblings().css("display","block")
 })
-var now=0;
-var next=0;
-function move(type){
-    type=type||"right";
-    if(type=="right"){
-        next++;
-        if(next>=$(".slide-wrap").find("li").length){
-            next=0;
-        }
-        $(".slide-wrap").find("li").eq(now).css("left","0");
-        $(".slide-wrap").find("li").eq(next).css("left","100%");
-        $(".slide-wrap").find("li").eq(now).animate({"left":"-100%"},1000);
-        $(".slide-wrap").find("li").eq(next).animate({"left":"0"},1000);
-        $(".slide-wrap-btn").find("li>div").eq(now).animate({"width":"100%"},1000);
-        $(".slide-wrap-btn").find("li>div").css("width","0")
-        now=next;
+
+
+var clientW=$(window).width();
+var clientH=$(window).height();
+$(".son").css({
+    width:clientW,
+    height:clientH
+})
+
+/*轮播图*/
+var currentNum=0;
+var nextNum=0;
+var currentTime=0;
+var flag=true;
+
+
+
+function move(){
+    nextNum++;
+    if(nextNum==3){
+        nextNum=0;
+        flag=false;
+    }
+
+    $(".list:eq("+currentNum+")").animate({width:"80%"}).css("zIndex",0);
+
+    $(".list:eq("+nextNum+")").animate({left:0},function(){
+        $(".list:eq("+currentNum+")").css({
+            left:"100%",width:"100%",height:"100%"
+        })
+        currentNum=nextNum;
+        currentTime=0;
+        flag=true;
+
+    }).css("zIndex",1)
+}
+function move1(){
+    currentTime+=50;
+    var bili=currentTime/3000;
+    if(bili>1){
+        bili=1;
+    }
+    $(".progress").eq(currentNum).css({width:bili*100+"%"})
+    if(flag===false){
+        $(".progress").css("width",0);
     }
 }
-var t=setInterval(move,3000)
-$(".leftbtn").hover(function(){
-    $(".leftbtn").find(".left").css("display","block");
-    //clearInterval(t)
-},function(){
-    $(".leftbtn").find(".left").css("display","none");
-    //setInterval(move,3000)
+
+
+var t1=setInterval(move,3000)
+var t2=setInterval(move1,50)
+
+$(window).focus(function(){
+    t1=setInterval(move,3000);
+    t2=setInterval(move1,50)
 })
-$(".rightbtn").hover(function(){
-    $(".rightbtn").find(".right").css("display","block");
-    //clearInterval(t)
-},function(){
-    $(".rightbtn").find(".right").css("display","none");
-    //setInterval(move,3000)
+$(window).blur(function(){
+    clearInterval(t1);
+    clearInterval(t2);
 })
 
 
-//$(".slide-wrap").mouseover(function(){
-//    clearInterval(t)
-//})
-//$(".slide-wrap").mouseout(function(){
-//    setInterval(move,3000)
-//})
-//$(".slide-wrap-btn").find("li").mouseover(function(){
-//    var index=$(this).index();
-//    $(".slide-wrap-btn").find("li>div").css("width","0").eq(index).css("width","100%");
-//})
+$(".btns-list").click(function(){
+    nextNum=$(this).index(".btns-list");
+    stop();
+})
+
+$(".leftBtn").click(function(){
+    nextNum--
+    if(nextNum==-1){
+        nextNum=2;
+    }
+    stop();
+})
+$(".rightBtn").click(function(){
+    nextNum++
+    if(nextNum==3){
+        nextNum=0;
+    }
+    stop();
+})
 
 
+function stop(){
+    /*
+     *  定时器停掉
+     * */
+    clearInterval(t1);
+    clearInterval(t2);
 
+    /*按钮的变化*/
+    $(".btns-list").find(".progress").css("width",0);
+    $(".btns-list").eq(nextNum).find(".progress").css("width","100%");
+
+    /*轮播图发生变化*/
+    if(nextNum>currentNum){
+        $(".list:eq("+currentNum+")").animate({width:"80%"}).css("zIndex",0);
+
+        $(".list:eq("+nextNum+")").animate({left:0},function(){
+            $(".list:eq("+currentNum+")").css({
+                left:"100%",width:"100%",height:"100%"
+            })
+            currentNum=nextNum;
+
+        }).css("zIndex",1)
+    }else{
+        $(".list:eq("+currentNum+")").animate({left:"100%"}).css("zIndex",1);
+        $(".list").eq(nextNum).css({
+            width:"80%",left:0
+        }).animate({width:"100%",height:"100%"},function(){
+            currentNum=nextNum;
+        })
+
+
+    }
+}
 $(".sfooter>li>h3>span").click(function(){
-    $(this).parent().siblings().toggle();
+    $(this).parent().siblings().slideToggle();
 })

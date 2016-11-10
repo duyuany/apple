@@ -32,57 +32,106 @@ a{
     max-width: 976px;
     margin: 0 auto;
 }
-#nav{
-    display: block;
-    margin: 0;
-    width: 100%;
-    height: 48px;
-    max-height: 44px;
-    background: #333;
-    background: rgba(0,0,0,0.8);
-    font-size: 18px;
+header{
+    /*margin-top: ;*/
     position: relative;
+    /*top: -16px;*/
     z-index: 2;
-    overflow: hidden;
 }
-#nav-content{
-    margin: 0 auto;
-    width:100%;
-    font-size: 1em;
-    font-family: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    text-align: inherit;
-}
-#nav-content ul{
-    cursor: default;
-    margin: 0 auto;
-    width: auto;
+.nav{
+    width: 100%;
     height: 44px;
-    text-align: justify;
+    background: rgba(0,0,0,0.8);
 }
-#nav-content ul li{
+.nav>ul{
+    /*width:1000px;*/
+    height: 100%;
+    margin: 0 auto;
+    display: none;
+}
+.nav>ul>li{
+    float: left;
+    /*margin: 0 35px;*/
+    height: 100%;
+}
+.nav ul li a{
+    box-sizing: content-box;
+    display: block;
+    width: 30px;
+    padding:0 10px;
+    height: 100%;
+    color: #FFFFFF;
+}
+.nav>ul>li:nth-child(1)>a{
+    background: url("../img/apple.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(2)>a{
+    background: url("../img/mac.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(3)>a{
+    background: url("../img/ipad.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(4)>a{
+    background: url("../img/ipone.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(5)>a{
+    background: url("../img/watch.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(6)>a{
+    background: url("../img/music.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(7)>a{
+    width:57px;
+    background: url("../img/support.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(8)>a{
+    background: url("../img/search.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(9)>a{
+    background: url("../img/bag.svg") no-repeat center;
+}
+.nav>ul>li:nth-child(1){
+    margin:0;
+}
+.nav>ul>li:last-child{
+    float: right;;
+    margin:0;
+}
+
+.nav>.small-nav{
+    width: 100%;
+    height:44px;
+    display: block;
     position: relative;
-    height: 44px;
-    z-index: 1;
-    vertical-align: top;
 }
-#nav-content ul li a{
-    color: #fff;
-    font-size: 14px;
-    line-height: 44px;
+.nav>.small-nav>li:nth-child(2){
+    width: 30px;
+    position: absolute;
+    left:0;
+    right:0;
+    margin: 0 auto;
+}
+.nav>.small-nav>li:nth-child(1) a{
+    background: none;
+}
+.nav>.small-nav>li:nth-child(2) a{
+    background: url("../img/apple.svg") no-repeat center;
+}
+.nav>.small-nav>li:nth-child(3) a{
+    background: url("../img/bag.svg") no-repeat center;
+}
+.small-nav>li>a>div{
+    width:15px;
+    height:1px;
+    background: #FFFFFF;
+    margin-top: 5px;
+}
+.small-nav>li>a>div:first-child{
+    margin-top: 15px;
 }
 
 
 /*小屏*/
-.slide-wrap{
-    position: relative;
-    top: -44px;
-    z-index: 1;
-    overflow: hidden;
-    height:530px;
-    width: 100%;
-}
 .pro{
     box-sizing: border-box;
     margin-top: -43px;
@@ -106,42 +155,125 @@ a{
 .pro4{
     background: url('../img/444.jpg') no-repeat center;
 }
-.slide-wrap ul .img1{
-    background-image: url("../img/iphone_portrait_small.jpg");
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-}
-.slide-wrap ul .img2{
-    background-image: url("../img/event_small.jpg");
-    background-repeat: no-repeat;
-    background-position:bottom center;
-    background-size:cover;
-    left: 100%;
-}
-.slide-wrap ul .img3{
-    background-image: url("../img/macbookpro_portrait_small.jpg");
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: 150%;
-    left: 100%;
-}
 
 
+.wheel{
+    height:530px;width:100%;position: relative;overflow: hidden;
+    top: -44px;
+}
+.box{
+    width:100%;height:100%;position: relative;
+    margin: 0;
+}
+.box .list{
+    position: absolute;
+    width:100%;height:100%;
+}
+.box .one{
+    background:#fff url(../img/macbookpro_portrait_small.jpg) no-repeat;
+    background-size: contain;  background-position: center bottom;
 
+}
+.box .three{
+    background:#000 url(../img/event_small.jpg) no-repeat;
+    background-size: cover;  background-position: center bottom;
+    left:100%;
+
+}
+.box .two{
+    background:#000 url(../img/iphone_portrait_small.jpg) no-repeat;
+    background-size: contain;  background-position: center bottom;
+    left:100%;
+}
+.leftBtn{
+    left: 18px;
+    position: absolute;
+    top:0;bottom: 0;
+    margin: auto 0;
+    width: 64px;
+    height:64px;
+    border-radius: 50%;
+    border: none;
+    line-height: 64px;
+    color: rgb(132,132,132);
+    font-size: 40px;
+    font-family: "宋体";
+    background: #ccc;
+    opacity: 0;
+    transition:opacity .5s linear;
+
+}
+.rightBtn{
+    right: 18px;
+    position: absolute;
+    top:0;bottom: 0;
+    margin: auto 0;
+    width: 64px;
+    height:64px;
+    border-radius: 50%;
+    border: none;
+    line-height: 64px;
+    color: rgb(132,132,132);
+    font-size: 40px;
+    font-family: "宋体";
+    background: #ccc;
+    opacity: 0;
+    transition:opacity .5s linear;
+}
+.left{
+    height:100%;width:25%;
+    position: absolute;left:0;top:0;
+    z-index:1000;
+
+}
+.left:hover >.leftBtn{
+    opacity: 1;
+}
+.right:hover>.rightBtn{
+    opacity: 1;
+}
+.right{
+    height:100%;width:25%;
+    position: absolute;right:0;top:0;
+    z-index:1000;
+
+}
+
+.btns{
+    width:170px;height:3px;
+    position: absolute;
+    left:0;right:0;bottom: 50px;
+    margin:auto;z-index:999;
+
+}
+.btns .btns-list{
+    float:left;width:50px;height:100%;
+    margin-right:10px;
+    /*border:1px solid #ccc;*/
+    position: relative;
+    background: rgba(50,50,50,0.8);
+}
+.btns .btns-list:last-child{
+    margin:0;
+}
+.btns .progress{
+    height:100%;background: #e3e3e3;
+    width:0%;
+}
 
 /*中屏*/
-@media screen and (min-width: 710px){
-    #nav-content ul li{
-        margin: 0 12px;
+@media screen and (min-width: 750px){
+    .nav>ul{
+        width: 750px;
+        display: block;
     }
-    #nav-content{
-        width:710px;
+    .nav>ul>li{
+        margin:0 18px;
     }
-    #nav-content ul .apple{
-        left:0;
+    .nav>.small-nav{
+        display: none;
     }
-    .slide-wrap{
+    .wheel{
         height: 540px;
     }
     .pro1{
@@ -156,37 +288,31 @@ a{
     .pro4{
         background: url('../img/44.jpg') no-repeat center;
     }
-    .slide-wrap ul .img1{
-        background-image: url("../img/iphone_square_large.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
+    .box .one{
+        background:#fff url(../img/macbookpro_medium.jpg) no-repeat;
+
+        background-size: contain;
+        background-position: center bottom;
+
     }
-    .slide-wrap ul .img2{
-        background-image: url("../img/event_medium.jpg");
-        background-repeat: no-repeat;
-        background-position:90% center;
-        background-size: 100%;
-        left: 100%;
-    }
-    .slide-wrap ul .img3{
-        background-image: url("../img/macbookpro_medium.jpg");
-        background-repeat: no-repeat;
-        background-position: bottom center;
-        background-size:110%;
-        left: 100%;
+
+    .box .three{
+        background:#000 url(../img/event_medium.jpg) no-repeat;
+        background-size: 100%;  background-position: center 30%;
+
     }
 }
 
 
 /*大屏*/
 @media screen and (min-width: 1050px){
-    #nav-content ul li{
-        margin: 0 17px;
+    .nav>ul{
+        width: 1000px;
     }
-    #nav-content{
-        width:980px;
+    .nav>ul>li{
+        margin: 0 35px;
     }
-    .slide-wrap{
+    .wheel{
         height: 562px;
     }
     .t2{
@@ -204,50 +330,21 @@ a{
     .pro4{
         background: url('../img/4.jpg') no-repeat center;
     }
-    .slide-wrap ul .img1{
-        background-image: url("../img/iphone_large.jpg");
-        background-repeat: no-repeat;
-        background-position:top center;
-        background-size: auto 100%;
-        background-color: #000;
-    }
-    .slide-wrap ul .img2{
-        background-image: url("../img/event_large.jpg");
-        background-repeat: no-repeat;
-        background-position:top center;
-        background-size: 100%;
-        height: 140%;
-       top: -40%;
-        left: 100%;
-    }
-    .slide-wrap ul .img3{
-        background-image: url("../img/macbookpro_large.jpg");
-        background-repeat: no-repeat;
-        background-position: bottom center;
+    .box .one{
+        background:#fff url(../img/macbookpro_large.jpg) no-repeat;
         background-size: contain;
-        left: 100%;
-        bottom: -10%;
+        background-position: center bottom;
+
+    }
+    .box .three{
+        background:#000 url(../img/event_large.jpg) no-repeat;
+        background-size: 100%;  background-position: center 30%;
+
     }
 }
 
 
-/*轮播字*/
-.slide-title{
-    color: #FFFFFF;
-    position: absolute;
-    top:15%;
-    width: 100%;
-    text-align: center;
-}
-.slide-title h1,h2{
-    margin: 5px;
-}
-.slide-title h1{
-    font-size: 34px;
-}
-.slide-title h2{
-    font-size: 28px;
-}
+
 
 
 
@@ -285,52 +382,8 @@ a{
 }
 
 
-/*轮播*/
-.slide-wrap ul{
-    position: absolute;
-    left:0;
-    top:-15px;
-    width: 100%;
-    height:100%;
-    /*background: url("../img/z.jpg");*/
-}
-.slide-wrap ul li{
-    width: 100%;
-    height:100%;
-    position: absolute;
-}
 
 
-
-/*轮播按钮*/
-.slide-wrap-btn{
-    width: 100%;
-    position: absolute;
-    bottom:6%;
-    z-index: 100;
-}
-.slide-wrap-btn ul{
-    width: 180px;
-    height:22px;
-    /*background: red;*/
-    margin: 0 auto;
-}
-.slide-wrap-btn ul li{
-    width: 50px;
-    height:2px;
-    background: #666;
-    margin: 0 5px;
-    float: left;
-    opacity: 0.5;
-}
-.slide-wrap-btn ul li>div{
-    width: 0;
-    height: 100%;
-    background: #e3e3e3;
-}
-/*.slide-wrap-btn ul .active{*/
-    /*background: #e3e3e3;*/
-/*}*/
 
 
 
@@ -461,6 +514,9 @@ a{
     display: none;
 }
 @media screen and (max-width:750px){
+    .foot{
+        font-size: 5px;
+    }
     nav>.lnav{
         display: none;
     }
@@ -504,3 +560,26 @@ html,body{
 .menu-content li a{
     color: #FFFFFF;
 }
+
+
+
+
+/*轮播字*/
+.slide-title{
+    color: #FFFFFF;
+    position: absolute;
+    top:15%;
+    width: 100%;
+    text-align: center;
+}
+.slide-title h1,h2{
+    margin: 5px;
+}
+.slide-title h1{
+    font-size: 34px;
+}
+.slide-title h2{
+    font-size: 28px;
+}
+
+
