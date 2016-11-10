@@ -43,7 +43,7 @@ function move(){
 }
 function move1(){
     currentTime+=50;
-    var bili=currentTime/3000;
+    var bili=currentTime/2000;
     if(bili>1){
         bili=1;
     }
@@ -54,11 +54,11 @@ function move1(){
 }
 
 
-var t1=setInterval(move,3000)
+var t1=setInterval(move,4000)
 var t2=setInterval(move1,50)
 
 $(window).focus(function(){
-    t1=setInterval(move,3000);
+    t1=setInterval(move,4000);
     t2=setInterval(move1,50)
 })
 $(window).blur(function(){
