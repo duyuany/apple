@@ -43,7 +43,7 @@ function move(){
 }
 function move1(){
     currentTime+=50;
-    var bili=currentTime/4000;
+    var bili=currentTime/3000;
     if(bili>1){
         bili=1;
     }
